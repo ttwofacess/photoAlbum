@@ -1,4 +1,5 @@
 let albumes=[];
+let desplegado;
 document.querySelector(".mas").addEventListener("click", mas);
 
 function mas(){
@@ -34,4 +35,24 @@ function desactivar(){
 
 function detectarEnter(){
 
+}
+
+function desplegar(yo){
+    document.querySelector(".miAlbum").computedStyleMap.display="block";
+    desplegado = (yo.getAttribute("mad"));
+    const datos = albumes[desplegado];
+    document.querySelector(".miAlbum").innerHTML = 
+    `
+        <h1>${datos.album}</h1>
+        <div class="imagenes"></div>
+        <div class="caja">
+            <input type="file" name="fichero" id="fichero" accept="image/*" />
+            <button id="enviar" onclick="enviar()">Subir fichero</button>
+        </div>
+    `;
+    if(datos.imagenes.length > 0){
+        datos.imagenes.map((valor)=>{
+            // Dibuje las imagenes
+        })
+    }
 }
