@@ -74,6 +74,14 @@ function desplegar(yo){
     }
 }
 
-function codigoHTML(){
-    
+function codigoHTML(dato){
+    document.querySelector(".imagenes").insertAdjacentElement("beforeend",
+        `
+        <div class="imagen">
+            onmouseover = "mostrar(this)"
+            onmouseout = "ocultar(this)"
+            onclick = "ampliar()" alt="" />
+        </div>
+        `
+    )
 }
