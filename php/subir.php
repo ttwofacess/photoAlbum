@@ -17,5 +17,13 @@
         echo "Sorry, tu archivo es demasiado grande. El maximo permitido es de 9.5MB.";
         $uploadOk = 0;
     }
+
+    if($uploadOk === 1) {
+        if(move_uploaded_file($_FILES["fichero"]["tmp_name"], $nombreFinal)) {
+            echo $imagenAMostrar;
+        } else {
+            echo "Sorry, hubo un error al subir tu archivo.";
+        }
+    }
 ?
 
