@@ -55,4 +55,25 @@ function desplegar(yo){
             // Dibuje las imagenes
         })
     }
+
+    function enviar(){
+        if(fichero.files.length > 0) {
+            let data=new FormData();
+            data.append('fichero',fichero.files[0]);
+            fetch('php/subir.php', {
+                method:'POST',
+                body:data
+            })
+            .then(response => response.text())
+            .then(data => {
+                albumes[desplegado].imagenes.push(data.trim());
+                codigoHTML(data);
+                escribir();
+            })
+        }
+    }
+}
+
+function codigoHTML(){
+    
 }
