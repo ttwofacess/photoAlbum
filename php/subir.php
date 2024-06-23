@@ -12,4 +12,10 @@
         echo "El archivo no es una imagen. Sorry, solamente se pueden subir imagenes.";
         $uploadOk = 0;
     }
+
+    if($_FILES["fichero"]["size"]>10000000) {
+        echo "Sorry, tu archivo es demasiado grande. El maximo permitido es de 9.5MB.";
+        $uploadOk = 0;
+    }
 ?
+
