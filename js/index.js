@@ -73,3 +73,7 @@ function desplegar(yo){
         }
     }
 }
+
+function codigoHTML(){
+    
+}
