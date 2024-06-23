@@ -80,7 +80,9 @@ function codigoHTML(dato){
         <div class="imagen">
             onmouseover = "mostrar(this)"
             onmouseout = "ocultar(this)"
-            onclick = "ampliar()" alt="" />
+            onclick = "ampliar('${dato}')" alt="" />
+            <img src="${dato}" alt="" />
+            <img class="papelera" src="img/papelera.png" onclick="eliminarImagen(this,'${dato}', event)" />
         </div>
         `
     )
