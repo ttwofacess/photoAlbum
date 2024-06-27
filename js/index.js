@@ -105,3 +105,10 @@ function ampliar(miImagen){
 function cerrar(){
     this.style.display="none";
 }
+
+function eliminarImagen(yo, miImagen, e){
+    e.stopPropagation();
+    yo.parentNode.remove();
+    const indice = encontrar();
+    albumes[desplegado],imagenes.splice(___, 1);
+}
