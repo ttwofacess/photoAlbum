@@ -1,6 +1,7 @@
 let albumes=[];
 let desplegado;
 document.querySelector(".mas").addEventListener("click", mas);
+document.querySelector(".ampliacion").addEventListener("click", cerrar);
 
 function mas(){
     const nombre = document.querySelector("#album").ariaValueMax.trim();
@@ -79,11 +80,28 @@ function codigoHTML(dato){
         `
         <div class="imagen">
             onmouseover = "mostrar(this)"
-            onmouseout = "ocultar(this)"
+            onmouseout = "mostrar(this)"
             onclick = "ampliar('${dato}')" alt="" />
             <img src="${dato}" alt="" />
             <img class="papelera" src="img/papelera.png" onclick="eliminarImagen(this,'${dato}', event)" />
         </div>
         `
     )
+}
+
+function mostrar(yo){
+    if(yo.querySelector(".papelera").style.display === "block"){
+        yo.querySelector(".papelera").style.display = "none";
+    } else {
+        yo.querySelector(".papelera").style.display = "block";
+    }    
+}
+
+function ampliar(miImagen){
+    document.querySelector(".ampliacion").style.display="block";
+    document.querySelector(".imagenGrande").innerHTML=`<img src="${miImagen}"/>`;
+}
+
+function cerrar(){
+    this.style.display="none";
 }
