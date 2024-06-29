@@ -109,6 +109,25 @@ function cerrar(){
 function eliminarImagen(yo, miImagen, e){
     e.stopPropagation();
     yo.parentNode.remove();
-    const indice = encontrar();
-    albumes[desplegado],imagenes.splice(___, 1);
+    const indice = encontrar(yo);
+    albumes[desplegado],imagenes.splice(indice, 1);
+    fetch('php/borrarFichero.php', {
+        method:'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded',
+        },
+        body: `ficheroABorrar=${encodeURIComponent(miImagen)}`,
+    })
+    .then(response => response.text())
+    .then(data => console.log(data));
+    escribir();
+}
+
+function encontrar(yo) {
+    const hijos = yo.parentNode.parentNode.children;
+    for(let k = 0; k< hijos.length; k++) {
+        if(yo.parentNode === hijos[k]) {
+            return k;
+        }
+    }
 }
