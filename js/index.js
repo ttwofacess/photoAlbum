@@ -1,6 +1,7 @@
 let albumes=[];
 let desplegado;
 document.querySelector(".mas").addEventListener("click", mas);
+document.querySelector(".ampliacion").addEventListener("click", cerrar);
 
 function mas(){
     const nombre = document.querySelector("#album").ariaValueMax.trim();
@@ -74,6 +75,59 @@ function desplegar(yo){
     }
 }
 
-function codigoHTML(){
-    
+function codigoHTML(dato){
+    document.querySelector(".imagenes").insertAdjacentElement("beforeend",
+        `
+        <div class="imagen">
+            onmouseover = "mostrar(this)"
+            onmouseout = "mostrar(this)"
+            onclick = "ampliar('${dato}')" alt="" />
+            <img src="${dato}" alt="" />
+            <img class="papelera" src="img/papelera.png" onclick="eliminarImagen(this,'${dato}', event)" />
+        </div>
+        `
+    )
+}
+
+function mostrar(yo){
+    if(yo.querySelector(".papelera").style.display === "block"){
+        yo.querySelector(".papelera").style.display = "none";
+    } else {
+        yo.querySelector(".papelera").style.display = "block";
+    }    
+}
+
+function ampliar(miImagen){
+    document.querySelector(".ampliacion").style.display="block";
+    document.querySelector(".imagenGrande").innerHTML=`<img src="${miImagen}"/>`;
+}
+
+function cerrar(){
+    this.style.display="none";
+}
+
+function eliminarImagen(yo, miImagen, e){
+    e.stopPropagation();
+    yo.parentNode.remove();
+    const indice = encontrar(yo);
+    albumes[desplegado],imagenes.splice(indice, 1);
+    fetch('php/borrarFichero.php', {
+        method:'POST',
+        headers:{
+            'Content-Type':'application/x-www-form-urlencoded',
+        },
+        body: `ficheroABorrar=${encodeURIComponent(miImagen)}`,
+    })
+    .then(response => response.text())
+    .then(data => console.log(data));
+    escribir();
+}
+
+function encontrar(yo) {
+    const hijos = yo.parentNode.parentNode.children;
+    for(let k = 0; k< hijos.length; k++) {
+        if(yo.parentNode === hijos[k]) {
+            return k;
+        }
+    }
 }
