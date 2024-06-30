@@ -124,7 +124,7 @@ function eliminarImagen(yo, miImagen, e){
 }
 
 function encontrar(yo) {
-    const hijos = yo.parentNode.parentNode.children;
+    const hijos = yo.parentNode.children;
     for(let k = 0; k< hijos.length; k++) {
         if(yo.parentNode === hijos[k]) {
             return k;
