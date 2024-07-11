@@ -131,3 +131,15 @@ function encontrar(yo) {
         }
     }
 }
+
+function insertar() {
+    fetch('php/insertar.php',{
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/jason'
+        },
+        body: JSON.stringify({
+            aGuardar:albumes
+        })
+    })
+}
