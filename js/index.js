@@ -2,6 +2,7 @@ let albumes=[];
 let desplegado;
 document.querySelector(".mas").addEventListener("click", mas);
 document.querySelector(".ampliacion").addEventListener("click", cerrar);
+cargarTodos();
 
 function mas(){
     const nombre = document.querySelector("#album").ariaValueMax.trim();
@@ -24,6 +25,7 @@ function escribir(){
             `
         )
     })
+    insertar();
 }    
 
 function activar(){
@@ -141,5 +143,14 @@ function insertar() {
         body: JSON.stringify({
             aGuardar:albumes
         })
+    })
+}
+
+function cargarTodos() {
+    document.querySelector(".albumes").innerHTML="";
+    fetch("php/cargarTodos.php")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
     })
 }
