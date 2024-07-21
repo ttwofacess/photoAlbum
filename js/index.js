@@ -21,6 +21,8 @@ function escribir(){
                 <div class="nombreAlbum" contenteditable="true" onfocus="activar(this)" onblur="desactivar(this)" onkeydown="detectarEnter(this, event)">
                     ${valor.album}
                 </div>
+                <img src="img/papelera.png" onclick="eliminarAlbum(this, event)">
+                <div class="numeroImagenes">${valor.imagenes.length} fotos</div>
             </div>
             `
         )
@@ -56,6 +58,7 @@ function desplegar(yo){
     if(datos.imagenes.length > 0){
         datos.imagenes.map((valor)=>{
             // Dibuje las imagenes
+            codigoHTML(valor);
         })
     }
 
@@ -151,6 +154,8 @@ function cargarTodos() {
     fetch("php/cargarTodos.php")
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        //console.log(data);
+        albumes=JSON.parse(data)
+        escribir();
     })
 }
