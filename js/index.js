@@ -137,6 +137,15 @@ function encontrar(yo) {
     }
 }
 
+function encontrar2(yo) {
+    const hijos = yo.parentNode.parentNode.children;
+    for(let k = 0; k< hijos.length; k++) {
+        if(yo.parentNode === hijos[k]) {
+            return k;
+        }
+    }
+}
+
 function insertar() {
     fetch('php/insertar.php',{
         method: 'POST',
@@ -158,4 +167,12 @@ function cargarTodos() {
         albumes=JSON.parse(data)
         escribir();
     })
+}
+
+function eliminarAlbum(yo, e) {
+    document.querySelector(".miAlbum").style.display="none";
+    const indice = encontrar2(yo);
+    albumes.splice(indice, 1);
+    escribir();
+    e.stopPropagation();
 }
