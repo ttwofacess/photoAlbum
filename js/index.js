@@ -2,7 +2,15 @@ let albumes=[];
 let desplegado;
 document.querySelector(".mas").addEventListener("click", mas);
 document.querySelector(".ampliacion").addEventListener("click", cerrar);
+document.querySelector("#album").addEventListener("keydown", teclado);
 cargarTodos();
+
+function teclado(e) {
+    if(e.key === "Enter"){
+        mas();
+    }
+}
+}
 
 function mas(){
     const nombre = document.querySelector("#album").ariaValueMax.trim();
