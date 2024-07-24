@@ -38,12 +38,16 @@ function escribir(){
     insertar();
 }    
 
-function activar(){
-
+function activar(yo){
+    yo.style.color="red";
 }
 
 function desactivar(){
-
+    yo.style.color = null;
+    const contenido = yo.innerHTML.trim();
+    const indice = encontrar2(yo);
+    albumes[indice].album = contenido;
+    insertar();
 }
 
 function detectarEnter(){
