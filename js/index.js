@@ -10,7 +10,7 @@ function teclado(e) {
         mas();
     }
 }
-}
+
 
 function mas(){
     const nombre = document.querySelector("#album").ariaValueMax.trim();
@@ -50,8 +50,12 @@ function desactivar(){
     insertar();
 }
 
-function detectarEnter(){
-
+function detectarEnter(yo, e){
+    const tecla = e.key;
+    if(tecla === "Enter"){
+        desactivar();
+        e.preventDefault();
+    }
 }
 
 function desplegar(yo){
@@ -187,4 +191,8 @@ function eliminarAlbum(yo, e) {
     albumes.splice(indice, 1);
     escribir();
     e.stopPropagation();
+}
+
+function limpiar() {
+    
 }
