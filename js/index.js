@@ -18,6 +18,7 @@ function mas(){
         albumes.push({album:nombre,imagenes:[]});
         escribir();
     }
+    limpiar();
 }
 
 function escribir(){
@@ -42,7 +43,7 @@ function activar(yo){
     yo.style.color="red";
 }
 
-function desactivar(){
+function desactivar(yo){
     yo.style.color = null;
     const contenido = yo.innerHTML.trim();
     const indice = encontrar2(yo);
@@ -53,7 +54,7 @@ function desactivar(){
 function detectarEnter(yo, e){
     const tecla = e.key;
     if(tecla === "Enter"){
-        desactivar();
+        desactivar(yo);
         e.preventDefault();
     }
 }
@@ -194,5 +195,6 @@ function eliminarAlbum(yo, e) {
 }
 
 function limpiar() {
-    
+    document.querySelector("#album").value="";
+    document.querySelector("#album").focus();
 }
